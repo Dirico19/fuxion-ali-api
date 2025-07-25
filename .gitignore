@@ -1,0 +1,44 @@
+## Build results
+bin/
+obj/
+
+## Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Logs
+*.log
+
+## OS-specific
+.DS_Store
+Thumbs.db
+
+## ASP.NET Core secrets
+secrets.json
+*.db
+*.db-shm
+*.db-wal
+
+## .NET artifacts
+project.lock.json
+project.assets.json
+artifacts/
+*.pdb
+*.cache
+*.ilk
+*.tmp
+
+## Rider and VS Code
+.idea/
+.vscode/
+*.sln.iml
+
+## NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+*.nuspec
