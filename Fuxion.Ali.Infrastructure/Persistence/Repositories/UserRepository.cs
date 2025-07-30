@@ -1,14 +1,22 @@
 ﻿using Fuxion.Ali.Domain.Entities;
 using Fuxion.Ali.Domain.Interfaces.Repositories;
 using Fuxion.Ali.Infrastructure.Persistence.Repositories.Base;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fuxion.Ali.Infrastructure.Persistence.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public Task<User?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
+        private readonly AppDbContext _context;
+
+        public UserRepository(AppDbContext context) : base(context)
         {
-            throw new NotImplementedException();
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        public async Task<User?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
+        {
+            return await _context.Users.AsNoTracking().Include(u => u.UserRoles).ThenInclude(ur => ur.Role).SingleOrDefaultAsync(u => u.Name == name, cancellationToken);
         }
     }
 }
