@@ -1,7 +1,7 @@
 ﻿using Fuxion.Ali.Application.Auth.Login;
-using Fuxion.Ali.Application.Auth.Login.DTOs;
-using Fuxion.Ali.Application.Common;
 using Fuxion.Ali.Application.Security;
+using Fuxion.Ali.Contracts.Auth.Login;
+using Fuxion.Ali.Contracts.Common;
 using Fuxion.Ali.Domain.Interfaces;
 
 namespace Fuxion.Ali.Application.Auth

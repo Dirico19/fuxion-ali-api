@@ -1,5 +1,5 @@
 ﻿using Fuxion.Ali.Application.Auth;
-using Fuxion.Ali.Application.Auth.Login.DTOs;
+using Fuxion.Ali.Contracts.Auth.Login;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fuxion.Ali.API.Controllers

@@ -42,3 +42,4 @@ artifacts/
 .nuget/
 packages/
 *.nuspec
+nuget.config
