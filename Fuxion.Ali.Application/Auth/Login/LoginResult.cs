@@ -1,5 +1,5 @@
-﻿using Fuxion.Ali.Application.Common;
-using Fuxion.Ali.Contracts.Auth.Login;
+﻿using Fuxion.Ali.Contracts.Auth.Login;
+using Fuxion.Ali.Contracts.Common;
 
 namespace Fuxion.Ali.Application.Auth.Login
 {
