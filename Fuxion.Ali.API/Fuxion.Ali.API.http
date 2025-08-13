@@ -1,9 +1,9 @@
 @Fuxion.Ali.API_HostAddress = https://localhost:7029
 
 POST {{Fuxion.Ali.API_HostAddress}}/api/auth/login
-Accept: application/json
+Content-Type: application/json
 {
-  userName: "admin",
-  password: "admin"
+  "userName": "admin",
+  "password": "admin"
 }
 ###

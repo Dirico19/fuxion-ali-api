@@ -1,32 +1,53 @@
-﻿using Fuxion.Ali.Domain.Interfaces.Repositories.Base;
+﻿using Fuxion.Ali.Domain.Entities.Base;
+using Fuxion.Ali.Domain.Interfaces.Repositories.Base;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fuxion.Ali.Infrastructure.Persistence.Repositories.Base
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        public Task AddAsync(T entity, CancellationToken cancellationToken = default)
+        private readonly AppDbContext _context;
+
+        public BaseRepository(AppDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await _context.Set<T>().AddAsync(entity, cancellationToken);
         }
 
-        public Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default)
+        public Task Delete(T entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Remove(entity);
+
+            return Task.CompletedTask;
         }
 
-        public Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().ToListAsync(cancellationToken);
         }
 
-        public Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
+        public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync([id], cancellationToken);
+        }
+
+        public Task SoftDelete(BaseEntity entity, CancellationToken cancellationToken = default)
+        {
+            entity.IsDeleted = true;
+            entity.DeletedAt = DateTime.UtcNow;
+
+            return Task.CompletedTask;
+        }
+
+        public Task Update(T entity, CancellationToken cancellationToken = default)
+        {
+            _context.Set<T>().Update(entity);
+
+            return Task.CompletedTask;
         }
     }
 }

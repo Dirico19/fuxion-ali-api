@@ -8,8 +8,8 @@
 
   <ItemGroup>
 	<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.17" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.17">
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.18" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.18">
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
@@ -20,10 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Fuxion.Ali.Application\Fuxion.Ali.Application.csproj" />
     <ProjectReference Include="..\Fuxion.Ali.Domain\Fuxion.Ali.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Security\" />
   </ItemGroup>
 
 </Project>

@@ -9,9 +9,9 @@
         // Add more roles as needed
         public static readonly List<string> AllRoles =
         [
+            SuperAdmin,
             Admin,
-            User,
-            SuperAdmin
+            User
         ];
     }
 }
