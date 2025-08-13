@@ -18,5 +18,22 @@ namespace Fuxion.Ali.Infrastructure.Persistence.Repositories
         {
             return await _context.Users.AsNoTracking().Include(u => u.UserRoles).ThenInclude(ur => ur.Role).SingleOrDefaultAsync(u => u.Name == name, cancellationToken);
         }
+
+        public async Task<User?> FindWithDetailsByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await _context.Users
+                .Include(u => u.UserRoles).ThenInclude(ur => ur.Role)
+                .Include(u => u.Contacts)
+                .SingleOrDefaultAsync(u => u.Id == id, cancellationToken);
+        }
+
+        public async Task<IEnumerable<User>> GetAllWithDetailsByUpdatedAtAfterAsync(DateTime updatedAt, CancellationToken cancellationToken = default)
+        {
+            return await _context.Users
+                .Include(u => u.UserRoles).ThenInclude(ur => ur.Role)
+                .Include(u => u.Contacts)
+                .Where(u => u.UpdatedAt > updatedAt)
+                .ToListAsync(cancellationToken);
+        }
     }
 }

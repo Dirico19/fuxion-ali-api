@@ -7,5 +7,6 @@ namespace Fuxion.Ali.Domain.Entities
         public string Name { get; set; } = null!;
         public string Password { get; set; } = null!;
         public ICollection<UserRole> UserRoles { get; set; } = [];
+        public ICollection<Contact> Contacts { get; set; } = [];
     }
 }
