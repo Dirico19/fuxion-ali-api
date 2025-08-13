@@ -20,13 +20,9 @@ namespace Fuxion.Ali.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request, CancellationToken cancellationToken = default)
         {
-            if (request is null)
+            if (request is null || string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
             {
-                return BadRequest("Login request cannot be null.");
-            }
-            if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
-            {
-                return BadRequest("Username and password must be provided.");
+                return BadRequest("Por favor, ingrese los campos obligatorios.");
             }
 
             var result = await _authService.LoginAsync(request, cancellationToken);

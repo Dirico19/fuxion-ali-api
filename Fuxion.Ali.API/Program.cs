@@ -32,7 +32,20 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
+// Add cors policy
+var pwaUrl = builder.Configuration.GetValue<string>("PwaUrl") ?? throw new InvalidOperationException("PWA URL is not configured.");
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowPWAOrigin",
+        builder => builder.WithOrigins(pwaUrl)
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 var app = builder.Build();
+
+// Use cors policy
+app.UseCors("AllowPWAOrigin");
 
 // Configure the HTTP request pipeline.
 
@@ -44,3 +57,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// Generate a password hash for testing purposes
+//Console.Write("Ingresa una contrase a: ");
+//var password = Console.ReadLine();
+
+//var hasher = new PasswordHasher();
+//var hash = hasher.Hash(password!);
+
+//Console.WriteLine($"\nHash generado:");
+//Console.WriteLine(hash);

@@ -15,7 +15,7 @@ namespace Fuxion.Ali.Infrastructure.Migrations
                 columns: ["Id", "Name", "Password"],
                 values: new object[,]
                 {
-                    { "ed12f657-91dc-4996-9c7a-3ad51779e43a", "admin", "$2a$11$HAj.uS4cwsYEkg0GF7eq2ON3pSg/0d7P31jJ2ZKxdohI4wwknh8J2" }
+                    { "ed12f657-91dc-4996-9c7a-3ad51779e43a", "admin", "$2a$11$o8h3G00OiJmgFCVEiuBtdOxpYGHFvVhzmVf3nNvypAZGh/cEzm.Lq" }
                 }
             );
 
