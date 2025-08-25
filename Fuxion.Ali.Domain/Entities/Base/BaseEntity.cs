@@ -7,5 +7,10 @@
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; } = false;
+
+        public void Delete()
+        {
+            IsDeleted = true;
+        }
     }
 }

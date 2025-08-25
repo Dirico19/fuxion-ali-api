@@ -26,16 +26,8 @@ namespace Fuxion.Ali.API.Controllers
             }
 
             var result = await _authService.LoginAsync(request, cancellationToken);
-            if (!result.IsSuccess)
-            {
-                return result.StatusCode switch
-                {
-                    401 => Unauthorized(result),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError, result)
-                };
-            }
             
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

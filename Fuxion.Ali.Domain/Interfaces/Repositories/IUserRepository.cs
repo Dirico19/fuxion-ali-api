@@ -7,6 +7,6 @@ namespace Fuxion.Ali.Domain.Interfaces.Repositories
     {
         Task<User?> GetByNameAsync(string name, CancellationToken cancellationToken = default);
         Task<User?> FindWithDetailsByIdAsync(Guid id, CancellationToken cancellationToken = default);
-        Task<IEnumerable<User>> GetAllWithDetailsByUpdatedAtAfterAsync(DateTime updatedAt, CancellationToken cancellationToken = default);
+        Task<IEnumerable<User>> GetAllFilteredAsync(string? search, CancellationToken cancellationToken = default);
     }
 }

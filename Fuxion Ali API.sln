@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuxion.Ali.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuxion.Ali.Application", "Fuxion.Ali.Application\Fuxion.Ali.Application.csproj", "{14EB82F9-3AD7-45F2-9FBC-FAC479F4F58C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuxion.Ali.Contracts", "..\fuxion-ali-contracts\Fuxion.Ali.Contracts\Fuxion.Ali.Contracts.csproj", "{321E5CC7-84F9-116F-FC68-59AB1F8F90FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{14EB82F9-3AD7-45F2-9FBC-FAC479F4F58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14EB82F9-3AD7-45F2-9FBC-FAC479F4F58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14EB82F9-3AD7-45F2-9FBC-FAC479F4F58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{321E5CC7-84F9-116F-FC68-59AB1F8F90FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321E5CC7-84F9-116F-FC68-59AB1F8F90FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321E5CC7-84F9-116F-FC68-59AB1F8F90FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321E5CC7-84F9-116F-FC68-59AB1F8F90FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

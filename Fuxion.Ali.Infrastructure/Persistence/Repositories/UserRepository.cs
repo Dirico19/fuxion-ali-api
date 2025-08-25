@@ -27,13 +27,25 @@ namespace Fuxion.Ali.Infrastructure.Persistence.Repositories
                 .SingleOrDefaultAsync(u => u.Id == id, cancellationToken);
         }
 
-        public async Task<IEnumerable<User>> GetAllWithDetailsByUpdatedAtAfterAsync(DateTime updatedAt, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<User>> GetAllFilteredAsync(string? search, CancellationToken cancellationToken = default)
         {
-            return await _context.Users
+            var query = _context.Users
                 .Include(u => u.UserRoles).ThenInclude(ur => ur.Role)
                 .Include(u => u.Contacts)
-                .Where(u => u.UpdatedAt > updatedAt)
-                .ToListAsync(cancellationToken);
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(u => u.Name.Contains(search) ||
+                                         u.Contacts.Any(c => c.FirstName.Contains(search) ||
+                                                             c.LastName.Contains(search) ||
+                                                             c.Email.Contains(search) ||
+                                                             c.Phone.Contains(search)));
+            }
+
+            var users = await query.ToListAsync(cancellationToken);
+
+            return users;
         }
     }
 }

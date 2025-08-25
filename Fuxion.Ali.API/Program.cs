@@ -1,6 +1,7 @@
 using Fuxion.Ali.Application;
 using Fuxion.Ali.Infrastructure;
 using Fuxion.Ali.Infrastructure.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -17,8 +18,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>() ?? throw new InvalidOperationException("JWT settings are not configured properly.");
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -58,8 +59,8 @@ app.MapControllers();
 
 app.Run();
 
-// Generate a password hash for testing purposes
-//Console.Write("Ingresa una contrase a: ");
+//// Generate a password hash for testing purposes
+//Console.Write("Ingresa una contraseña: ");
 //var password = Console.ReadLine();
 
 //var hasher = new PasswordHasher();
