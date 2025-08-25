@@ -22,4 +22,12 @@
     <ProjectReference Include="..\Fuxion.Ali.Domain\Fuxion.Ali.Domain.csproj" />
   </ItemGroup>
 
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="Fuxion.Ali.Contracts" Version="1.0.1-feature-auth.4" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\..\fuxion-ali-contracts\Fuxion.Ali.Contracts\Fuxion.Ali.Contracts.csproj" />
+	</ItemGroup>
+
 </Project>

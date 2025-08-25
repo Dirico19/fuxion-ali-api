@@ -15,12 +15,19 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-	<PackageReference Include="Fuxion.Ali.Contracts" Version="1.0.1-feature-auth.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fuxion.Ali.Application\Fuxion.Ali.Application.csproj" />
     <ProjectReference Include="..\Fuxion.Ali.Infrastructure\Fuxion.Ali.Infrastructure.csproj" />
   </ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="Fuxion.Ali.Contracts" Version="1.0.1-feature-auth.4" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\..\fuxion-ali-contracts\Fuxion.Ali.Contracts\Fuxion.Ali.Contracts.csproj" />
+	</ItemGroup>
 
 </Project>

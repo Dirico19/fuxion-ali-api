@@ -15,6 +15,7 @@ namespace Fuxion.Ali.Infrastructure.Persistence
         public DbSet<User> Users => Set<User>();
         public DbSet<Role> Roles => Set<Role>();
         public DbSet<UserRole> UserRoles => Set<UserRole>();
+        public DbSet<Contact> Contacts => Set<Contact>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,7 +50,20 @@ namespace Fuxion.Ali.Infrastructure.Persistence
                 entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
                 entity.Property(e => e.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
                 entity.Property(e => e.IsDeleted).IsRequired().HasDefaultValue(false);
-
+            });
+            modelBuilder.Entity<Contact>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.FirstName).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.LastName).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.Email).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.Phone).IsRequired().HasMaxLength(25);
+                entity.HasOne(e => e.User)
+                      .WithMany(u => u.Contacts)
+                      .HasForeignKey(e => e.UserId);
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+                entity.Property(e => e.IsDeleted).IsRequired().HasDefaultValue(false);
             });
 
             ApplyGlobalFilters(modelBuilder);

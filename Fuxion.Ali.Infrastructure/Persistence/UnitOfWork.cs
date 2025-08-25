@@ -38,6 +38,10 @@ namespace Fuxion.Ali.Infrastructure.Persistence
                 else if (entry.State == EntityState.Modified)
                 {
                     entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    if (entry.Entity.IsDeleted)
+                    {
+                        entry.Entity.DeletedAt = DateTime.UtcNow;
+                    }
                 }
             }
 

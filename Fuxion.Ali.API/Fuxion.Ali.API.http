@@ -7,3 +7,5 @@ Content-Type: application/json
   "password": "admin"
 }
 ###
+
+GET {{Fuxion.Ali.API_HostAddress}}/api/user?search=
